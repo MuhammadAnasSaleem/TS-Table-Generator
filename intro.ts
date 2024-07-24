@@ -4,9 +4,9 @@ const form = document.querySelector<HTMLFormElement>("form");
 form?.addEventListener("submit", (e: Event) => {
   e.preventDefault();
   const inputElement = form?.children[0] as HTMLInputElement;
-  const input = inputElement.value.trim();
+  const input = inputElement.value!;
 
-  if (input !== "") {
+  if (input !== "" && Number(input) > 0) {
     if (div) {
       div.innerHTML = "";
       for (let i = 1; i <= 10; i++) {
@@ -17,6 +17,6 @@ form?.addEventListener("submit", (e: Event) => {
 
     inputElement.value = "";
   } else {
-    alert("Please enter a number");
+    alert("Please enter a valid number");
   }
 });

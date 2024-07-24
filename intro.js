@@ -1,20 +1,21 @@
-var div = document.querySelector(".value");
-var form = document.querySelector("form");
-form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (e) {
+"use strict";
+const div = document.querySelector(".value");
+const form = document.querySelector("form");
+form === null || form === void 0 ? void 0 : form.addEventListener("submit", (e) => {
     e.preventDefault();
-    var inputElement = form === null || form === void 0 ? void 0 : form.children[0];
-    var input = inputElement.value.trim();
-    if (input !== "") {
+    const inputElement = form === null || form === void 0 ? void 0 : form.children[0];
+    const input = inputElement.value;
+    if (input !== "" && Number(input) > 0) {
         if (div) {
             div.innerHTML = "";
-            for (var i = 1; i <= 10; i++) {
-                var value = "".concat(input, " x ").concat(i, " = ").concat(i * Number(input));
-                div.innerHTML += "".concat(value, "<br>");
+            for (let i = 1; i <= 10; i++) {
+                const value = `${input} x ${i} = ${i * Number(input)}`;
+                div.innerHTML += `${value}<br>`;
             }
         }
         inputElement.value = "";
     }
     else {
-        alert("Please enter a number");
+        alert("Please enter a valid number");
     }
 });
